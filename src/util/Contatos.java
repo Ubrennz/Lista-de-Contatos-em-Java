@@ -24,4 +24,8 @@ public class Contatos {
     public void setTelefone(String novoTelefone) {
         this.telefone = novoTelefone;
     }
+
+    public String toString() {
+        return nome + " " + telefone;
+    }
 }
