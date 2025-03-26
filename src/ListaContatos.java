@@ -16,7 +16,7 @@ public class ListaContatos {
 
         Contatos contato = new Contatos(nomeContato, numeroContato);
         agendaContatos.add(contato);
-        System.out.println("Contato " + nomeContato + "criado com sucesso!");
+        System.out.println("Contato " + nomeContato + " criado com sucesso!");
     }
 
     public static void verListaContatos() {
@@ -29,6 +29,8 @@ public class ListaContatos {
         System.out.print("Digite o nome do contato: ");
         String antigoNome = sc.nextLine();
 
+        boolean nomeAtualizado = false;
+
         for (Contatos nome : agendaContatos) {
             if (antigoNome.equalsIgnoreCase(nome.getNome())) {
                 System.out.print("Digite o novo do contato");
@@ -36,7 +38,34 @@ public class ListaContatos {
 
                 nome.setNome(novoNome);
                 System.out.println("Nome atualizado com sucesso!");
+                nomeAtualizado = true;
             }
+        }
+
+        if (!nomeAtualizado) {
+            System.out.printf("O contato %s não existe.\n", antigoNome);
+        }
+    }
+
+    public static void atualizarNumero() {
+        System.out.print("Digite o número do contato: ");
+        String antigoNumero = sc.nextLine();
+
+        boolean numeroAtualizado = false;
+
+        for (Contatos numero : agendaContatos) {
+            if (antigoNumero.equals(numero.getTelefone())) {
+                System.out.print("Digite o novo número do contato: ");
+                String novoNumero = sc.nextLine();
+
+                numero.setTelefone(novoNumero);
+                System.out.println("O número do contato foi atualizado com sucesso!");
+                numeroAtualizado = true;
+            }
+        }
+
+        if (!numeroAtualizado) {
+            System.out.printf("O número não %s não existe.\n", antigoNumero);
         }
     }
 
@@ -52,7 +81,7 @@ public class ListaContatos {
                 atualizarNome();
                 break;
             case 2:
-                System.out.println();
+                atualizarNumero();
                 break;
             default:
                 System.out.println("Opção inválida!");
