@@ -89,6 +89,31 @@ public class ListaContatos {
         }
     }
 
+    public static void removerContato(){
+        verListaContatos();
+
+        System.out.print("Digite o nome do contato que você deseja remover: ");
+        String nomeContato = sc.nextLine();
+
+        boolean contatoRemovido = false;
+        int count = 0;
+
+        for (Contatos contato : agendaContatos) {
+            if (nomeContato.equalsIgnoreCase(contato.getNome())) {
+                agendaContatos.remove(count);
+                contatoRemovido = true;
+                System.out.println("Contato " + contato.getNome() + " removido com sucesso!");
+                break;
+            }
+
+            count ++;
+        }
+
+        if (!contatoRemovido) {
+            System.out.println("O contato " + nomeContato + " não está dentro da agenda de contatos");
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("SISTEMA DE AGENDA DE CONTATOS");
         int opcao;
@@ -112,6 +137,9 @@ public class ListaContatos {
                     break;
                 case 3:
                     atualizarContato();
+                    break;
+                case 4:
+                    removerContato();
                     break;
                 default:
                     System.out.println("Opção inválida!");
