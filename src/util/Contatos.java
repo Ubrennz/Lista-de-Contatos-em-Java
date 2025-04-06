@@ -3,10 +3,14 @@ package util;
 public class Contatos {
     private String nome;
     private String telefone;
+    private String data;
+    private String hora;
 
-    public Contatos(String nome, String telefone) {
+    public Contatos(String nome, String telefone, String data, String hora) {
         this.nome = nome;
         this.telefone = telefone;
+        this.data = data;
+        this.hora = hora;
     }
 
     public String getNome() {
@@ -25,7 +29,15 @@ public class Contatos {
         this.telefone = novoTelefone;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
     public String toString() {
-        return nome + " " + telefone;
+        return nome + " " + telefone + " " + data + " " + hora;
     }
 }
