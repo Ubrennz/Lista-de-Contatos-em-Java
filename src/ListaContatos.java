@@ -1,12 +1,27 @@
 import util.Contatos;
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class ListaContatos {
     private static Scanner sc = new Scanner(System.in);
     private static List<Contatos> agendaContatos = new ArrayList<>();
 
+    public static String dataAtual() {
+        DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate data = LocalDate.now();
+        return data.format(formatacao);
+    }
+
+    public static String horaAtual() {
+        DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("kk:mm:ss");
+        LocalTime hora = LocalTime.now();
+        return hora.format(formatacao);
+    }
 
     public static void criarContato() {
         System.out.print("Digite o nome do contato: ");
@@ -14,7 +29,7 @@ public class ListaContatos {
         System.out.print("Digite o número do contato: ");
         String numeroContato = sc.next();
 
-        Contatos contato = new Contatos(nomeContato, numeroContato);
+        Contatos contato = new Contatos(nomeContato, numeroContato, dataAtual(), horaAtual());
         agendaContatos.add(contato);
         System.out.println("Contato " + nomeContato + " criado com sucesso!");
     }
@@ -33,7 +48,7 @@ public class ListaContatos {
 
         for (Contatos nome : agendaContatos) {
             if (antigoNome.equalsIgnoreCase(nome.getNome())) {
-                System.out.print("Digite o novo do contato");
+                System.out.print("Digite o novo do contato: ");
                 String novoNome = sc.nextLine();
 
                 nome.setNome(novoNome);
@@ -146,6 +161,5 @@ public class ListaContatos {
                     break;
             }
         } while (opcao != 0);
-
     }
 }
