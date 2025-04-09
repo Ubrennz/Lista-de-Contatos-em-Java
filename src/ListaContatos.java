@@ -10,6 +10,7 @@ import java.time.LocalTime;
 public class ListaContatos {
     private static Scanner sc = new Scanner(System.in);
     private static List<Contatos> agendaContatos = new ArrayList<>();
+    private static List<Contatos> backupContatos = new ArrayList<>();
 
     public static String dataAtual() {
         DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -31,6 +32,7 @@ public class ListaContatos {
 
         Contatos contato = new Contatos(nomeContato, numeroContato, dataAtual(), horaAtual());
         agendaContatos.add(contato);
+        backupContatos.add(contato);
         System.out.println("Contato " + nomeContato + " criado com sucesso!");
     }
 
